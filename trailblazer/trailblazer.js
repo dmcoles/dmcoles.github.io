@@ -1,11 +1,10 @@
-﻿var element;
+﻿
+var element;
 var context;
 var p = new Array(20*7);
 
 var p1;
 var p2;
-
-var grid;
 
 $(function () {
     document.onkeydown = keydown;
@@ -21,225 +20,19 @@ $(function () {
     p2context = p2element.getContext("2d");
     p2ballelement = document.getElementById("p2ball");
 
-    grid = new Array();
+    blockhole = '0';
+    blockjump = '1';
+    blockslow = '2';
 
-    grid.push("12121");
-    grid.push("21212");
-    grid.push("12121");
-    grid.push("21212");
-    grid.push("12121");
-    grid.push("21212");
-    grid.push("12121");
-    grid.push("21212");
-    grid.push("12121");
-    grid.push("31313");
-    grid.push("02020");
-    grid.push("20202");
-    grid.push("02020");
-    grid.push("21212");
-    grid.push("13131");
-    grid.push("01110");
-    grid.push("01110");
-    grid.push("01110");
-    grid.push("01110");
-    grid.push("11011");
-    grid.push("11011");
-    grid.push("11011");
-    grid.push("13031");
-    grid.push("01110");
-    grid.push("01110");
-    grid.push("01110");
-    grid.push("01110");
-    grid.push("11011");
-    grid.push("11011");
-    grid.push("11011");
-    grid.push("11011");
-    grid.push("10001");
-    grid.push("10001");
-    grid.push("10001");
-    grid.push("10001");
-    grid.push("12121");
-    grid.push("21212");
-    grid.push("12121");
-    grid.push("01010");
-    grid.push("01010");
-    grid.push("01010");
-    grid.push("01010");
-    grid.push("03030");
-    grid.push("00000");
-    grid.push("12121");
-    grid.push("21212");
-    grid.push("14141");
-    grid.push("24242");
-    grid.push("14141");
-    grid.push("21212");
-    grid.push("12121");
-    grid.push("21212");
-    grid.push("12121");
-    grid.push("21212");
-    grid.push("12121");
-    grid.push("24242");
-    grid.push("41414");
-    grid.push("14141");
-    grid.push("21212");
-    grid.push("12121");
-    grid.push("51515");
-    grid.push("12121");
-    grid.push("01010");
-    grid.push("12121");
-    grid.push("01010");
-    grid.push("12121");
-    grid.push("01010");
-    grid.push("12121");
-    grid.push("21212");
-    grid.push("10101");
-    grid.push("31313");
-    grid.push("13131");
-    grid.push("31313");
-    grid.push("13131");
-    grid.push("31313");
-    grid.push("13131");
-    grid.push("31313");
-    grid.push("12121");
-    grid.push("11011");
-    grid.push("12121");
-    grid.push("21212");
-    grid.push("14141");
-    grid.push("41414");
-    grid.push("14141");
-    grid.push("41414");
-    grid.push("14141");
-    grid.push("41414");
-    grid.push("12121");
-    grid.push("21212");
-    grid.push("12121");
-    grid.push("21212");
-    grid.push("12121");
-    grid.push("21212");
-    grid.push("14141");
-    grid.push("41414");
-    grid.push("14141");
-    grid.push("41414");
-    grid.push("14141");
-    grid.push("41414");
-    grid.push("21212");
-    grid.push("12121");
-    grid.push("21212");
-    grid.push("12121");
-    grid.push("10101");
-    grid.push("20202");
-    grid.push("10101");
-    grid.push("21212");
-    grid.push("12121");
-    grid.push("21212");
-    grid.push("01110");
-    grid.push("01110");
-    grid.push("01110");
-    grid.push("01110");
-    grid.push("11011");
-    grid.push("11011");
-    grid.push("11011");
-    grid.push("11011");
-    grid.push("01110");
-    grid.push("01110");
-    grid.push("01110");
-    grid.push("02220");
-    grid.push("01110");
-    grid.push("02220");
-    grid.push("01110");
-    grid.push("00000");
-    grid.push("00500");
-    grid.push("00500");
-    grid.push("05550");
-    grid.push("05550");
-    grid.push("05550");
-    grid.push("55555");
-    grid.push("55555");
-    grid.push("55555");
-    grid.push("05550");
-    grid.push("05550");
-    grid.push("00500");
-    grid.push("00100");
-    grid.push("00100");
-    grid.push("00100");
-    grid.push("00100");
-    grid.push("10101");
-    grid.push("00100");
-    grid.push("50505");
-    grid.push("00100");
-    grid.push("10101");
-    grid.push("00300");
-    grid.push("00000");
-    grid.push("00000");
-    grid.push("01110");
-    grid.push("12121");
-    grid.push("21212");
-    grid.push("12121");
-    grid.push("01110");
-    grid.push("12121");
-    grid.push("21212");
-    grid.push("12121");
-    grid.push("21212");
-    grid.push("10101");
-    grid.push("21212");
-    grid.push("12121");
-    grid.push("31313");
-    grid.push("12121");
-    grid.push("01010");
-    grid.push("12121");
-    grid.push("21212");
-    grid.push("12121");
-    grid.push("21212");
-    grid.push("12121");
-    grid.push("21212");
-    grid.push("33333");
-    grid.push("00000");
-    grid.push("55555");
-    grid.push("00500");
-    grid.push("33333");
-    grid.push("00000");
-    grid.push("44444");
-    grid.push("00100");
-    grid.push("11111");
-    grid.push("01010");
-    grid.push("11111");
-    grid.push("00001");
-    grid.push("00001");
-    grid.push("11111");
-    grid.push("10000");
-    grid.push("10000");
-    grid.push("11111");
-    grid.push("00001");
-    grid.push("00001");
-    grid.push("11111");
-    grid.push("00001");
-    grid.push("00001");
-    grid.push("11111");
-    grid.push("13131");
-    grid.push("31313");
-    grid.push("13131");
-    grid.push("31313");
-    grid.push("13131");
-    grid.push("31313");
-    grid.push("00000");
-    grid.push("01110");
-    grid.push("01110");
-    grid.push("01110");
-    grid.push("12121");
-    grid.push("21212");
-    grid.push("12121");
-    grid.push("21212");
-    grid.push("12121");
-    grid.push("21212");
-    grid.push("12121");
-    grid.push("21212");
-    grid.push("12121");
-    grid.push("21212");
-    grid.push("12121");
-    grid.push("21212");
-    grid.push("12121");
-    grid.push("21212");
-
+    blockcolours = {};
+    blockcolours[0] = '#000000';
+    blockcolours[1] = '#ffffff';
+    blockcolours[2] = '#ff0000';
+    blockcolours[3] = '#00ff00';
+    blockcolours[4] = '#0000ff';
+    blockcolours[5] = '#00ffff';
+    blockcolours[6] = '#ff00ff';
+    blockcolours[7] = '#ffff00';
 
     for (var i = 0; i < 20; i++)
     {
@@ -264,15 +57,15 @@ $(function () {
         if (i > 0 && p[(i - 1) * 7 + 6] !== v) p[i * 7 + 6] = v; else p[i * 7 + 6] = -1;
     }
 
-    p1 = new Player(p1context,p1ball,0,grid)
-    p2 = new Player(p2context,p2ball, 1, grid)
+    p1 = new Player(p1context,p1ball,0, 1)
+    p2 = new Player(p2context,p2ball, 1, 1)
 
 
     setTimeout(runframe, 20);
 });
 
 
-function drawline(canvas, i, j, oset) {
+function drawline(grid, canvas, i, j, oset) {
     var h = p[j * 7 + i];
 
     if (h === -1) return;
@@ -282,36 +75,12 @@ function drawline(canvas, i, j, oset) {
 
 
 
+    linedraw(canvas, h, 0, 320, '#000000');
 
     for (var k = 0; k < 5; k++) {
         var c = grid[oset][k];
 
-        var colour;
-
-        switch (c) {
-            case '0':
-                colour = '#000000';
-                break;
-            case '1':
-                colour = '#ffffff';
-                break;
-            case '2':
-                colour = '#777777';
-                break;
-            case '3':
-                colour = '#00ffff';
-                break;
-            case '4':
-                colour = '#00ff00';
-                break;
-            case '5':
-                colour = '#ff0000';
-                break;
-
-            default:
-                colour = '#0000ff';
-                break;
-        }
+        var colour = blockcolours[c];
 
         linedraw(canvas, h, l, width, colour);
         l += width;
@@ -468,9 +237,8 @@ function keyup(evt)
 }
 
 class Player {
-    constructor(canvas, ballelement, playernum, griddata) {
+    constructor(canvas, ballelement, playernum, level) {
         this.playernum = playernum;
-        this.griddata = griddata;
         this.x=0;
         this.y=0;
         this.v=0;
@@ -488,7 +256,6 @@ class Player {
         this.jump = false;
 
         this.gridvpos = 0;
-
         this.gridoffset = 0;
 
         this.playernum = playernum;
@@ -497,7 +264,7 @@ class Player {
         this.canvas = canvas;
         this.canvas.lineWidth = 2;
 
-        this.grid = griddata;
+        this.grid = new Array();
 
         this.ballelement = ballelement;
 
@@ -510,6 +277,20 @@ class Player {
         this.startcount = 0;
 
         this.endtime = null;
+
+        this.finishedcount = 0;
+
+        this.starttime = window.performance.now();
+        this.starting = true;
+        this.startcount = 0;
+
+        this.endtime = null;
+
+        this.finishedcount = 0;
+        this.currentlevel = level;
+
+        setuplevel(this.currentlevel, this.grid);
+
     }
 
     drawall() {
@@ -517,10 +298,10 @@ class Player {
 
         for (var i = 0; i < 7; i++) {
             for (var j = 0; j < 20; j++) {
-                drawline(this.canvas, i, j, oset);
+                drawline(this.grid, this.canvas, i, j, oset);
             }
             oset++;
-            if (oset >= grid.length) oset = 0;
+            if (oset >= this.grid.length) oset = 0;
         }
     }
 
@@ -537,9 +318,10 @@ class Player {
 
         var oset = this.gridoffset;
 
+
         for (var i = 0; i < 7; i++)
         {
-            drawline(this.canvas, i, this.gridvpos, oset);
+            drawline(this.grid, this.canvas, i, this.gridvpos, oset);
             oset++;
             if (oset >= this.grid.Count) oset = 0;
         }
@@ -568,13 +350,13 @@ class Player {
 
 
         if (this.left && this.x > 0) {
-            this.x -= 2;
+            this.x -= 3;
         }
-        if (this.right && this.x < (this.formwidth - 44)) this.x += 2;
+        if (this.right && this.x < (this.formwidth - 44)) this.x += 3;
         if (this.down && this.v > 0) this.v--;
         if (this.up && this.v < 50) this.v++;
 
-        if (this.jump && this.y === 0) this.vy = 15;
+        if (this.jump && this.y === 0) this.vy = 8;
 
         this.y = this.y + (this.vy / 2);
 
@@ -592,25 +374,37 @@ class Player {
 
     drawball()
     {
-        if (this.finished && this.endtime===null)
+        if (this.finished)
         {
-            //display level complete
-            this.endtime = window.performance.now();
+            if (this.endtime === null) {
+                //display level complete
+                this.endtime = window.performance.now();
 
-            var timetaken = Math.floor((this.endtime - this.starttime) / 10) / 100;
+                var timetaken = Math.floor((this.endtime - this.starttime) / 10) / 100;
 
-            this.canvas.font = "12pt Arial";
-            this.canvas.strokeStyle = "black";
-            this.canvas.lineWidth = 8;
-            this.canvas.lineJoin = "miter"; //Experiment with "bevel" & "round" for the effect you want!
-            this.canvas.miterLimit = 2;
-            this.canvas.strokeText("LEVEL COMPLETE", 90, 30);
-            this.canvas.strokeText("TIME "+timetaken.toString(), 120, 60);
-            this.canvas.fillStyle = "white";
-            this.canvas.fillText("LEVEL COMPLETE", 90, 30);
-            this.canvas.fillText("TIME " + timetaken.toString(), 120, 60);
-            this.canvas.lineWidth = 1;
-                        
+                this.canvas.font = "12pt Arial";
+                this.canvas.strokeStyle = "black";
+                this.canvas.lineWidth = 8;
+                this.canvas.lineJoin = "miter"; //Experiment with "bevel" & "round" for the effect you want!
+                this.canvas.miterLimit = 2;
+                this.canvas.strokeText("LEVEL COMPLETE", 90, 50);
+                this.canvas.strokeText("TIME " + timetaken.toString(), 120, 70);
+                this.canvas.fillStyle = "white";
+                this.canvas.fillText("LEVEL COMPLETE", 90, 60);
+                this.canvas.fillText("TIME " + timetaken.toString(), 120, 70);
+                this.canvas.lineWidth = 1;
+                this.finishedcount = 0;
+            }
+            else
+            {
+                this.finishedcount++;
+
+                if (this.finishedcount===100)
+                {
+                    this.nextlevel();
+                }
+
+            }
             return;
         }
         this.ballelement.style.left = (this.x * 2).toString()+"px";
@@ -626,20 +420,20 @@ class Player {
             this.friction = 1;
 
             //empty grid cell
-            if (gridline[midx] === '0')
+            if (gridline[midx] === blockhole)
             {
                 this.dead = true;
 				this.deadcount=0;
             }
 
             //jump cell
-            if (gridline[midx] === '3')
+            if (gridline[midx] === blockjump)
             {
-                this.vy = 15;
+                this.vy = 8;
             }
 
             //slowdown grid
-            if (gridline[midx] === '4')
+            if (gridline[midx] === blockslow)
             {
                 this.friction = 4;
             }
@@ -658,7 +452,14 @@ class Player {
             this.canvas.lineJoin = "miter"; //Experiment with "bevel" & "round" for the effect you want!
             this.canvas.miterLimit = 2;
 
-            if (this.startcount<20)
+
+            if (this.startcount < 30) {
+                this.canvas.strokeText("LEVEL " + this.currentlevel.toString(), 130, 60);
+                this.canvas.fillStyle = "white";
+                this.canvas.fillText("LEVEL " + this.currentlevel.toString(), 130, 60);
+                this.canvas.lineWidth = 1;
+            }
+            else if (this.startcount<60)
             {
                 this.canvas.strokeText("READY", 140, 60);
                 this.canvas.fillStyle = "white";
@@ -666,7 +467,7 @@ class Player {
                 this.canvas.lineWidth = 1;
 
             }
-            else if (this.startcount<40)
+            else if (this.startcount<90)
             {
                 this.canvas.strokeText("STEADY", 130, 60);
                 this.canvas.fillStyle = "white";
@@ -682,7 +483,7 @@ class Player {
                 this.canvas.lineWidth = 1;
             }
 
-            if (this.startcount > 60) {
+            if (this.startcount > 120) {
                 this.starting = false;
                 this.drawall();
             }
@@ -695,11 +496,11 @@ class Player {
         this.moveball();
         if (!this.dead && !this.finished)
         {
-            this.checkcollision(grid[Math.max(0, this.gridoffset - 1)]);
+            this.checkcollision(this.grid[Math.max(0, this.gridoffset - 1)]);
             for (var i = 0; i < (this.v/10) / this.friction; i++)
             {
                 this.paint();
-                this.checkcollision(grid[Math.max(0, this.gridoffset - 1)]);
+                this.checkcollision(this.grid[Math.max(0, this.gridoffset - 1)]);
             }
         }   
 
@@ -719,4 +520,28 @@ class Player {
         this.vy = 15;
 
     }
+
+    nextlevel() {
+
+        this.finished = false;
+        this.gridvpos = 0;
+        this.gridoffset = 0;
+
+        this.starttime = window.performance.now();
+        this.starting = true;
+        this.startcount = 0;
+
+        this.endtime = null;
+
+        this.finishedcount = 0;
+
+        this.currentlevel++
+        setuplevel(this.currentlevel,this.grid);
+
+        this.starting = true;
+
+        this.resetplayer();
+
+    }
+
 }
