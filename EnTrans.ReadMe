@@ -1,0 +1,203 @@
+
+
+        AmiExpress 4.20 Translation Function Enabler (EnTrans)
+
+
+This program enables the previously undocumented automatic translation
+functionality within AmiExpress 4.20.
+
+This is alpha software and has had very little testing, it is not suitable
+for production use but at worst it may screw up your machine or cause 
+instability and force you to need to reset.
+
+This feature was previously included in earlier versions of AmiExpress 4 as
+an undocumented feature but was removed in AmiExpress 4.8. It allowed you to
+define language dictionaries and for them to be used to do a rudimentary
+translation process in Sysop chats.
+
+This functionality was partly rewritten and extended and in AmiExpress 4.20
+but still undocumented and also due to there not being a new release of ACP
+to go with the Express apart of AmiExpress version 4.20 the functionality
+was not possible to use.
+
+I was sifting through a disassembly of Express 4.20 for my other project
+(An open source rewrite of AmiExpress 4) I found this functionality and
+was able to understand enough of it to be able to write a little program
+that makes it possible to re-activate this functionality.
+
+In order to try out this feature within AmiExpress you will need to
+configure your BBS system as follows (sample files are also included
+in this archive):
+
+    1. Enable ACS.TRANSLATION for any users that wish to take
+       advantage of this
+
+    2. Set up a LANGUAGES.TXT file in the root of BBS: folder that will
+       be shown when the users changes their language setting
+
+    3. Set up a LANGUAGES.INFO in the root of BBS: with the following
+       tooltypes:
+         3.1 - HOSTLANGUAGE=<hostLang> this defines the base language that
+               the bbs operates in.
+         3.2 - LANGUAGE.<numb>=<lang> define the languages known to the
+               system. This list should include the host Language
+        eg.
+
+        HOSTLANGUAGE=English
+        LANGUAGE.1=English
+        LANGUAGE.2=German
+        LANGUAGE.3=French
+        LANGUAGE.4=Gibberish
+
+     4. Create a Languages folder in BBS:
+
+     5. Create a dictionary file for translating to and from the host
+        language to each of the other languages
+
+          eg.   EnglishGerman.TRN
+                EnglishFrench.TRN
+                EnglishGibberish.TRN
+                GermanEnglish.TRN
+                FrenchEnglish.TRN
+                GibberishEnglish.TRN
+
+        These translation files are just text files containing a list of
+        one word per line alternating between the two languages.
+
+          eg. the EnglishGerman.TRN might contain
+
+            help
+            hilfe
+            look
+            schauen
+            get
+            holen
+            ask
+            fragen
+            let
+            zulassen
+            speak
+            sprechen
+
+          and the GermanEnglish.TRN would be the same but with each pair
+          of lines reversed.
+
+     6. Anytime after starting ACP run the EnTrans executable to enable
+        the functionality - it will remain in place until you use CTRL C
+        to close it down. If you shut down ACP however you will need to
+        re-run EnTrans, so it's is best if you shut down EnTrans before
+        closing down ACP if you plan to restart ACP.
+
+        eg.    EnTrans 0 3
+
+        you pass in the range of node numbers you wish to install this
+        patch on (eg. 0 3 will install onto nodes 0,1,2,3).
+
+User Configuration
+------------------
+
+Once you have completed these steps and the EnTrans program is running you
+can make use of the auto-translation functionality.
+
+If you log into AmiExpress you will now have an extra option on the user
+configuration menu (W command)
+
+            1. LOGIN NAME..............ByteMaster
+            2. REAL NAME...............Joseph Hodge
+            3. INTERNET NAME...........jhodge
+            4. LOCATION................Radford, Va.
+            5. PHONE NUMBER............603-555-1212
+            6. PASSWORD................ENCRYPTED
+            7. LINES PER SCREEN........23
+            8. COMPUTER................Amiga 2000/GVP030
+            9. SCREEN TYPE.............Amiga Ansi
+           10. SCREEN CLEAR............Yes
+           11. TRANSFER PROTOCOL......./X Zmodem
+           12. EDITOR TYPE.............Prompt
+           13. ZOOM TYPE...............QWK
+           14. AVAILABLE FOR CHAT/OLM..Yes
+           15. TRANSLATOR..............English
+
+Unfortunately this new setting is not saved when you log off and will always
+default back to the host language defined for the BBS.
+
+If you change this setting to another language then the automatic
+translation will be activated in sysop chat. You can also press H when you
+are selecting the new language to turn the word highlighting on and off.
+When word highlighting is turned on then any untranslated words will be
+highlighted to the user. This setting is also not persisted between
+sessions and will always be reset at logon/logoff
+
+Sysop Chat / TranChat
+---------------------
+
+Once you have chosen your language, sysop chat will be shown in the ACP
+window as 'TranChat' instead of the usual 'Chatting'. For some reason
+if you have a STARTCHAT.TXT defined then TranChat is disabled. You will have
+to revert to the default chat start message if you wish to use this
+functionality. When using TranChat the lines of text will appear as you type
+at your end, but the remote user (or Sysop if it is the remote user typing)
+will only see the text appear after the whole line has been entered and they
+will automatically see the translated text even though you still see
+whatever you typed at your end.
+
+This obviously only works for remote logons and you won't see any difference
+when typing into the AmiExpress window for a sysop logon or local logon.
+
+Message Translations
+--------------------
+
+When reading messages you are able to use the T option to automatically
+translate the message you are reading from the host language to your
+currently selected language. This does not affect the message in any way and is
+purely a temporary change. If you reply to the message for example the message
+will still be quoted in its original form.
+
+Some other options are also available from the messaging menu to assist with
+translation.
+
+    TS  -  Choose a new language (Does not redisplay the message in that
+           language though, so you will need to use the T option afterwards.
+
+    T*  -  Attempts to translate the message from each language defined in
+           the system back to the base language, you will be prompted to
+           press space after each language is displayed.
+
+    T!  -  Attempts to translate the message to each language defined in
+           the system from the base language, you will be prompted to
+           press space after each language is displayed.
+
+These commands are useful if you do not necessarily know which language
+you are seeing.
+
+
+Thats all there is to it.... I hope you enjoy playing with this.
+
+
+Release History
+---------------
+
+  v0.99 - Initial version released 28-Aug-2018
+
+
+Credits
+-------
+
+  All investigation and code done by Darren Coles
+
+Greetings
+---------
+
+  Quick greets to:
+
+     Ordyne - thanks for lots of help testing various stuff
+
+     Black Beard - you've been very quiet recently. Hope to speak soon
+
+     Everyone on the AmiExpress facebook page.
+
+     Everyone who still cares about AmiExpress or Amiga BBS's
+
+
+PS Full Source code is included.
+
